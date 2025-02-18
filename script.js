@@ -1,105 +1,118 @@
 
-const billDisplay = document.querySelector('#bill');
-const tipPercentageButtons  = document.querySelectorAll('.percent');
-const populationDisplay = document.querySelector('#people');
-const tipAmountDisplay = document.getElementById('tip-amount');
-const totalBillAmountDisplay = document.getElementById('total-bill');
-const resetButton = document.getElementById('reset');
-const customPercentageButton = document.getElementById('custom');
+// const billDisplay = document.querySelector('#bill');
+// const tipPercentageButtons  = document.querySelectorAll('.percent');
+// const populationDisplay = document.querySelector('#people');
+// const tipAmountDisplay = document.getElementById('tip-amount');
+// const totalBillAmountDisplay = document.getElementById('total-bill');
+// const resetButton = document.getElementById('reset');
+// const customPercentageButton = document.getElementById('custom');
 
 
-let bill;
-let tipPercent;
-let numberOfPeople = Number(populationDisplay.value);
+// let bill;
+// let tipPercent;
+// let numberOfPeople = Number(populationDisplay.value);
 
-billDisplay.addEventListener('keyup', (event) => {    
-    bill = Number(event.target.value);
-    // bill = parseFloat(event.target.value);
-    // console.log(input.value);
-    calculate()
-})
+// billDisplay.addEventListener('keyup', (event) => {    
+//     bill = Number(event.target.value);
+//     // bill = parseFloat(event.target.value);
+//     // console.log(input.value);
+//     calculate()
+// })
 
-console.log(tipPercent);
+// console.log(tipPercent);
 
-customPercentageButton.addEventListener('click', () =>{
-    tipPercent = prompt('Enter your tip percentage');
-    tipPercent = parseFloat(tipPercent);
-    console.log({tipPercent});
-    if(isNaN(tipPercent)){
-        return alert('Please enter a valid tip percentage')
-    }
-    // convert to percentage
-    tipPercent = tipPercent/100
-    calculate()
-})
+// customPercentageButton.addEventListener('click', () =>{
+//     tipPercent = prompt('Enter your tip percentage');
+//     tipPercent = parseFloat(tipPercent);
+//     console.log({tipPercent});
+//     if(isNaN(tipPercent)){
+//         return alert('Please enter a valid tip percentage')
+//     }
+//     // convert to percentage
+//     tipPercent = tipPercent/100
+//     calculate()
+// })
 
-populationDisplay.addEventListener('keyup', (e) => {
-    if(e.target.value === ''){
-        numberOfPeople = 1;
-    }else{
-        numberOfPeople = parseInt(e.target.value);
-    }   
+// populationDisplay.addEventListener('keyup', (e) => {
+//     if(e.target.value === ''){
+//         numberOfPeople = 1;
+//     }else{
+//         numberOfPeople = parseInt(e.target.value);
+//     }   
     
-    calculate();
-})
+//     calculate();
+// })
 
-for(let tipPercentageButton of tipPercentageButtons){
-    tipPercentageButton.addEventListener('click', () => {
-        // console.log(tipPercentageButton.textContent)
+// for(let tipPercentageButton of tipPercentageButtons){
+//     tipPercentageButton.addEventListener('click', () => {
+//         // console.log(tipPercentageButton.textContent)
 
-        // Remove percentage sign from input
-        tipPercent = tipPercentageButton.textContent.slice(0, -1);
+//         // Remove percentage sign from input
+//         tipPercent = tipPercentageButton.textContent.slice(0, -1);
 
-        // convert tipPercent to number
-        tipPercent = Number(tipPercent);
+//         // convert tipPercent to number
+//         tipPercent = Number(tipPercent);
 
-        // convert to percentage
-        tipPercent = tipPercent/100
-        // console.log(tipPercent)
-        calculate()
-    })
-}
+//         // convert to percentage
+//         tipPercent = tipPercent/100
+//         // console.log(tipPercent)
+//         calculate()
+//     })
+// }
 
-const calculate = () => {
-    console.log({bill, tipPercent, numberOfPeople})
-    if(isNaN(bill)){
-        return alert('invalid bill');       
-    }
-    if(isNaN(tipPercent)){
-        return       
-    }
-    if(isNaN(numberOfPeople)){
-        return       
-    }
-    let tip = bill * tipPercent;
-    let tipPerPerson = tip/numberOfPeople;
-    let billPerPerson = bill/numberOfPeople;
-    let totalBillPerPerson = billPerPerson + tipPerPerson;
-    tipAmountDisplay.textContent = `$${tipPerPerson.toFixed(2)}`;
-    totalBillAmountDisplay.textContent = `$${totalBillPerPerson.toFixed(2)}`
-    console.log({tip, tipPerPerson})
-    resetButton.classList.remove('disabled')
-}
+// const calculate = () => {
+//     console.log({bill, tipPercent, numberOfPeople})
+//     if(isNaN(bill)){
+//         return alert('invalid bill');       
+//     }
+//     if(isNaN(tipPercent)){
+//         return       
+//     }
+//     if(isNaN(numberOfPeople)){
+//         return       
+//     }
+//     let tip = bill * tipPercent;
+//     let tipPerPerson = tip/numberOfPeople;
+//     let billPerPerson = bill/numberOfPeople;
+//     let totalBillPerPerson = billPerPerson + tipPerPerson;
+//     tipAmountDisplay.textContent = `$${tipPerPerson.toFixed(2)}`;
+//     totalBillAmountDisplay.textContent = `$${totalBillPerPerson.toFixed(2)}`
+//     console.log({tip, tipPerPerson})
+//     resetButton.classList.remove('disabled')
+// }
 
-resetButton.addEventListener('click', () => {
-    totalBillAmountDisplay.textContent = `$ 0.00`;
-    tipAmountDisplay.textContent  = `$ 0.00`;
-    tipPercent = undefined;
-    populationDisplay.value = '1';
-    billDisplay.value = '';
-    resetButton.classList.add('disabled')
-})
+// resetButton.addEventListener('click', () => {
+//     totalBillAmountDisplay.textContent = `$ 0.00`;
+//     tipAmountDisplay.textContent  = `$ 0.00`;
+//     tipPercent = undefined;
+//     populationDisplay.value = '1';
+//     billDisplay.value = '';
+//     resetButton.classList.add('disabled')
+// })
 
 
-const input = document.getElementById("New-Task");
-const  addTask = document.getElementById("Add-Task");
-const clearAll = document.getElementById("ClearAll");
-const show = document.getElementById("show");
-const hide = document.getElementById("hide");
-const newTask = document.getElementById("NewTask");
-const edit = document.getElementById("edit");
-const delet = document.getElementById("delete");
+ 
+    const taskInput = document.getElementById("New-Task");
+    const addTaskButton = document.getElementById("addTask");
+    const taskList = document.getElementById("task-list");
+    const showMessage = document.getElementById("show");
+    const clearAllButton = document.getElementById("clearAll");
+    
 
-addTask.addEventListener("click",){
-    hide.style.display = (hide.style.display === 'hide') ? 'block' : 'show';
-}
+    
+    addTaskButton.addEventListener("click", function () {
+
+        if (taskList.style.display === "none") {
+            style.display = "block";
+            
+        } else {
+            style.display = "none";
+        }
+
+        let taskValue = taskInput.value.trim();
+        if (taskValue === "") {
+            alert("Please enter a task");
+            return;
+        }
+        
+    
