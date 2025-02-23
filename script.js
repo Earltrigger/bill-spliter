@@ -92,27 +92,43 @@
 
 
  
-    const taskInput = document.getElementById("New-Task");
-    const addTaskButton = document.getElementById("addTask");
-    const taskList = document.getElementById("task-list");
-    const showMessage = document.getElementById("show");
-    const clearAllButton = document.getElementById("clearAll");
+    // const taskInput = document.getElementById("New-Task");
+    // const addTaskButton = document.getElementById("addTask");
+    // const taskList = document.getElementById("task-list");
+    // const showMessage = document.getElementById("show");
+    // const clearAllButton = document.getElementById("clearAll");
     
 
     
-    addTaskButton.addEventListener("click", function () {
+    // addTaskButton.addEventListener("click", function () {
 
-        if (taskList.style.display === "none") {
-            style.display = "block";
+    //     if (taskList.style.display === "none") {
+    //         style.display = "block";
             
-        } else {
-            style.display = "none";
+    //     } else {
+    //         style.display = "none";
+    //     }
+
+    //     let taskValue = taskInput.value.trim();
+    //     if (taskValue === "") {
+    //         alert("Please enter a task");
+    //         return;
+    //     }
+
+        function printFullname(firstname, lastname) {
+
+          console.log(`my Name is ${firstname} ${lastname}`);
         }
 
-        let taskValue = taskInput.value.trim();
-        if (taskValue === "") {
-            alert("Please enter a task");
-            return;
+        printFullname("Emem", "james");
+
+
+        function formatName(func, firstname, lastname) {
+            func(firstname, lastname);
+
         }
+
+        formatName(printFullname, "Emem", "doe");
+
         
     
